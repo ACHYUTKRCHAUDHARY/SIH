@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Real-time Weather App</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Real-time Weather App Using Vanilla JavaScript and API</h1>
+            <div class="search-bar">
+                <input type="text" placeholder="Search City..." id="search-input">
+                <button id="search-button">Search</button>
+            </div>
+            <div class="current-location">
+                <button id="current-location-button">Current Location</button>
+            </div>
+        </div>
+        <div class="content">
+            <div class="now-weather">
+                <div class="now-temp">
+                    <h2 id="temp"></h2>
+                    <span id="temp-unit">°C</span>
+                </div>
+                <div class="now-icon">
+                    <img id="weather-icon" src="https://th.bing.com/th/id/OIP.tHbqw3mZEODgrp80IxP2bQHaFj?rs=1&pid=ImgDetMain" alt="Weather Icon">
+                </div>
+                <div class="now-description">
+                    <p id="weather-description"></p>
+                </div>
+                <div class="now-details">
+                    <div class="now-date">
+                        <i class="fa fa-calendar"></i>
+                        <span id="date"></span>
+                    </div>
+                    <div class="now-location">
+                        <i class="fa fa-map-marker"></i>
+                        <span id="location"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="todays-highlights">
+                <h2>Today's Highlights</h2>
+                <div class="air-quality-index">
+                    <h3>Air Quality Index</h3>
+                    <div class="aqi-details">
+                        <div>
+                            <i class="fa fa-wind"></i>
+                            <span>PM2.5</span>
+                            <span id="pm25"></span>
+                        </div>
+                        <div>
+                            <i class="fa fa-cloud"></i>
+                            <span>SO2</span>
+                            <span id="so2"></span>
+                        </div>
+                        <div>
+                            <i class="fa fa-sun-o"></i>
+                            <span>NO2</span>
+                            <span id="no2"></span>
+                        </div>
+                        <div>
+                            <i class="fa fa-tint"></i>
+                            <span>O3</span>
+                            <span id="o3"></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="sunrise-sunset">
+                    <h3>Sunrise & Sunset</h3>
+                    <div class="sunrise-details">
+                        <i class="fa fa-sun-o"></i>
+                        <span>Sunrise</span>
+                        <span id="sunrise"></span>
+                    </div>
+                    <div class="sunset-details">
+                        <i class="fa fa-moon-o"></i>
+                        <span>Sunset</span>
+                        <span id="sunset"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="other-details">
+                <div class="humidity">
+                    <h3>Humidity</h3>
+                    <i class="fa fa-tint"></i>
+                    <span id="humidity"></span>
+                </div>
+                <div class="pressure">
+                    <h3>Pressure</h3>
+                    <i class="fa fa-tachometer"></i>
+                    <span id="pressure"></span>
+                </div>
+                <div class="visibility">
+                    <h3>Visibility</h3>
+                    <i class="fa fa-eye"></i>
+                    <span id="visibility"></span>
+                </div>
+                <div class="feels-like">
+                    <h3>Feels Like</h3>
+                    <i class="fa fa-thermometer-half"></i>
+                    <span id="feels-like"></span>
+                </div>
+            </div>
+            <div class="five-days-forecast">
+                <h2>5 Days Forecast</h2>
+                <div class="forecast-days">
+                    <div class="day">
+                        <div class="day-date">
+                            <span id="day1-date"></span>
+                            <span id="day1-day"></span>
+                        </div>
+                        <div class="day-icon">
+                            <img id="day1-icon" src="https://i.pinimg.com/564x/3a/4d/4c/3a4d4cd9cbe371bee533c5eb6d9d9cfc.jpg" alt="Weather Icon">
+                        </div>
+                        <div class="day-temp">
+                            <span id="day1-temp"></span>
+                            <span>°C</span>
+                        </div>
+                    </div>
+                    <div class="day">
+                        <div class="day-date">
+                            <span id="day2-date"></span>
+                            <span id="day2-day"></span>
+                        </div>
+                        <div class="day-icon">
+                            <img id="day2-icon" src="https://i.pinimg.com/564x/44/9b/34/449b34b69d5ff67f25b8360b244c4f68.jpg" alt="Weather Icon">
+                        </div>
+                        <div class="day-temp">
+                            <span id="day2-temp"></span>
+                            <span>°C</span>
+                        </div>
+                    </div>
+                    <div class="day">
+                        <div class="day-date">
+                            <span id="day3-date"></span>
+                            <span id="day3-day"></span>
+                        </div>
+                        <div class="day-icon">
+                            <img id="day3-icon" src="https://i.pinimg.com/564x/31/37/d5/3137d58770b581a5fbe6046930c76b67.jpg" alt="Weather Icon">
+                        </div>
+                        <div class="day-temp">
+                            <span id="day3-temp"></span>
+                            <span>°C</span>
+                        </div>
+                    </div>
+                    <div class="day">
+                        <div class="day-date">
+                            <span id="day4-date"></span>
+                            <span id="day4-day"></span>
+                        </div>
+                        <div class="day-icon">
+                            <img id="day4-icon" src="https://th.bing.com/th?id=OIP.h6LZBgEwB1DiwEXpOia0sQHaF7&w=279&h=223&c=8&rs=1&qlt=90&o=6&pid=3.1&rm=2" alt="Weather Icon">
+                        </div>
+                        <div class="day-temp">
+                            <span id="day4-temp"></span>
+                            <span>°C</span>
+                        </div>
+                    </div>
+                    <div class="day">
+                        <div class="day-date">
+                            <span id="day5-date"></span>
+                            <span id="day5-day"></span>
+                        </div>
+                        <div class="day-icon">
+                            <img id="day5-icon" src="https://th.bing.com/th?id=OIP.nL2Hvs4FraasxziBT3YFewHaHa&w=250&h=250&c=8&rs=1&qlt=90&o=6&pid=3.1&rm=2" alt="Weather Icon">
+                        </div>
+                        <div class="day-temp">
+                            <span id="day5-temp"></span>
+                            <span>°C</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="hourly-forecast">
+                    <h3>Today at</h3>
+                    <div class="hour-container">
+                        <div class="hour" id="hour-0">
+                            <div class="hour-time">
+                                <span id="hour-0-time"></span>
+                            </div>
+                            <div class="hour-icon">
+                                <img id="hour-0-icon" src="https://th.bing.com/th/id/OIP.YKvFSocKFQaoo-56XlWNMwHaHa?w=176&h=180&c=7&r=0&o=5&pid=1.7" alt="Weather Icon">
+                            </div>
+                            <div class="hour-temp">
+                                <span id="hour-0-temp"></span>
+                                <span>°C</span>
+                            </div>
+                        </div>
+                        <div class="hour" id="hour-1">
+                            <div class="hour-time">
+                                <span id="hour-1-time"></span>
+                            </div>
+                            <div class="hour-icon">
+                                <img id="hour-1-icon" src="https://th.bing.com/th/id/OIP.no8OavIa5aZrS4uPlQ4fdQHaEy?w=282&h=183&c=7&r=0&o=5&pid=1.7" alt="Weather Icon">
+                            </div>
+                            <div class="hour-temp">
+                                <span id="hour-1-temp"></span>
+                                <span>°C</span>
+                            </div>
+                        </div>
+                        <div class="hour" id="hour-2">
+                            <div class="hour-time">
+                                <span id="hour-2-time"></span>
+                            </div>
+                            <div class="hour-icon">
+                                <img id="hour-2-icon" src="https://th.bing.com/th/id/OIP.uck1rM_T0hOK0r5Wl-IzLwHaHa?w=176&h=180&c=7&r=0&o=5&pid=1.7" alt="Weather Icon">
+                            </div>
+                            <div class="hour-temp">
+                                <span id="hour-2-temp"></span>
+                                <span>°C</span>
+                            </div>
+                        </div>
+                        <div class="hour" id="hour-3">
+                            <div class="hour-time">
+                                <span id="hour-3-time"></span>
+                            </div>
+                            <div class="hour-icon">
+                                <img id="hour-3-icon" src="https://th.bing.com/th?q=Weather+Icons+Heavy+Rain&w=120&h=120&c=1&rs=1&qlt=90&cb=1&dpr=1.1&pid=InlineBlock&mkt=en-IN&cc=IN&setlang=en&adlt=moderate&t=1&mw=247" alt="Weather Icon">
+                            </div>
+                            <div class="hour-temp">
+                                <span id="hour-3-temp"></span>
+                                <span>°C</span>
+                            </div>
+                        </div>
+                        <div class="hour" id="hour-4">
+                            <div class="hour-time">
+                                <span id="hour-4-time"></span>
+                            </div>
+                            <div class="hour-icon">
+                                <img id="hour-4-icon" src="https://th.bing.com/th?q=Weather+Icons+Transparent+Background&w=120&h=120&c=1&rs=1&qlt=90&cb=1&dpr=1.1&pid=InlineBlock&mkt=en-IN&cc=IN&setlang=en&adlt=moderate&t=1&mw=247" alt="Weather Icon">
+                            </div>
+                            <div class="hour-temp">
+                                <span id="hour-4-temp"></span>
+                                <span>°C</span>
+                            </div>
+                        </div>
+                        <div class="hour" id="hour-5">
+                            <div class="hour-time">
+                                <span id="hour-5-time"></span>
+                            </div>
+                            <div class="hour-icon">
+                                <img id="hour-5-icon" src="https://th.bing.com/th/id/OIP.tHbqw3mZEODgrp80IxP2bQHaFj?rs=1&pid=ImgDetMain" alt="Weather Icon">
+                            </div>
+                            <div class="hour-temp">
+                                <span id="hour-5-temp"></span>
+                                <span>°C</span>
+                            </div>
+                        </div>
+                        <div class="hour" id="hour-6">
+                            <div class="hour-time">
+                                <span id="hour-6-time"></span>
+                            </div>
+                            <div class="hour-icon">
+                                <img id="hour-6-icon" src="https://th.bing.com/th?q=Sunny+and+Rainy+Icon+Weather&w=120&h=120&c=1&rs=1&qlt=90&cb=1&dpr=1.1&pid=InlineBlock&mkt=en-IN&cc=IN&setlang=en&adlt=moderate&t=1&mw=247" alt="Weather Icon">
+                            </div>
+                            <div class="hour-temp">
+                                <span id="hour-6-temp"></span>
+                                <span>°C</span>
+                            </div>
+                        </div>
+                        <div class="hour" id="hour-7">
+                            <div class="hour-time">
+                                <span id="hour-7-time"></span>
+                            </div>
+                            <div class="hour-icon">
+                                <img id="hour-7-icon" src="https://th.bing.com/th?q=Weather+Icons+Transparent+PNG&w=120&h=120&c=1&rs=1&qlt=90&cb=1&dpr=1.1&pid=InlineBlock&mkt=en-IN&cc=IN&setlang=en&adlt=moderate&t=1&mw=247" alt="Weather Icon">
+                            </div>
+                            <div class="hour-temp">
+                                <span id="hour-7-temp"></span>
+                                <span>°C</span>
+                            </div>
+                        </div>
+                        <div class="hour" id="hour-8">
+                            <div class="hour-time">
+                                <span id="hour-8-time"></span>
+                            </div>
+                            <div class="hour-icon">
+                                <img id="hour-8-icon" src="https://th.bing.com/th/id/OIP.WLDISq99tDfHenKgZtbJugHaHa?w=210&h=210&c=7&r=0&o=5&dpr=1.1&pid=1.7" alt="Weather Icon">
+                            </div>
+                            <div class="hour-temp">
+                                <span id="hour-8-temp"></span>
+                                <span>°C</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer">
+            <div class="control-panel">
+                <button id="prev-day" class="prev-next"><i class="fa fa-angle-double-left"></i></button>
+                <button id="prev" class="prev-next"><i class="fa fa-angle-left"></i></button>
+                <div class="time-range">
+                    <span id="current-time"></span>
+                    <span id="total-time"></span>
+                </div>
+                <button id="next" class="prev-next"><i class="fa fa-angle-right"></i></button>
+                <button id="next-day" class="prev-next"><i class="fa fa-angle-double-right"></i></button>
+            </div>
+            <div class="demo-mode">
+                <span>Demo</span>
+                <button id="demo-button"><i class="fa fa-play-circle"></i></button>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
