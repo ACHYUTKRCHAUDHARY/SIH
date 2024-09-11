@@ -1,0 +1,298 @@
+body {
+    background-color: #181818;
+    color: #fff;
+    font-family: 'Arial', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+}
+
+.container {
+    background-color: #282c34;
+    border-radius: 10px;
+    -webkit-box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    -moz-box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    width: 80%;
+    max-width: 1000px;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.header h1 {
+    margin: 0;
+}
+
+.search-bar {
+    display: flex;
+}
+
+.search-bar input {
+    padding: 10px;
+    border-radius: 5px 0 0 5px;
+    border: none;
+    background-color: #333;
+    color: #fff;
+    width: 150px;
+}
+
+.search-bar button {
+    padding: 10px;
+    border-radius: 0 5px 5px 0;
+    border: none;
+    background-color: #4CAF50;
+    color: #fff;
+    cursor: pointer;
+}
+
+.search-bar button:focus {
+    outline: 2px solid #4CAF50;
+    outline-offset: 2px;
+}
+
+.current-location button {
+    padding: 10px;
+    border-radius: 5px;
+    border: none;
+    background-color: #333;
+    color: #fff;
+    cursor: pointer;
+}
+
+.content {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.now-weather {
+    background-color: #333;
+    border-radius: 10px;
+    padding: 20px;
+    flex: 1;
+}
+
+.now-weather .now-temp {
+    display: flex;
+    align-items: center;
+    font-size: 4rem;
+    margin-bottom: 10px;
+}
+
+.now-weather .now-icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.now-weather .now-icon img {
+    width: 100px;
+}
+
+.now-weather .now-description {
+    margin-bottom: 10px;
+}
+
+.now-weather .now-details {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.now-weather .now-details i {
+    margin-right: 5px;
+}
+
+.todays-highlights, .other-details {
+    background-color: #333;
+    border-radius: 10px;
+    padding: 20px;
+}
+
+.todays-highlights h3, .other-details h3 {
+    margin-top: 0;
+}
+
+.air-quality-index, .sunrise-sunset {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.air-quality-index .aqi-details, .sunrise-sunset .sunrise-details, .sunset-details {
+    display: flex;
+    justify-content: space-around;
+}
+
+.aqi-details div, .sunrise-details div, .sunset-details div {
+    display: flex;
+    align-items: center;
+}
+
+.aqi-details div i, .sunrise-details div i, .sunset-details div i {
+    margin-right: 5px;
+}
+
+.other-details {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.other-details div {
+    display: flex;
+    align-items: center;
+}
+
+.other-details div i {
+    margin-right: 5px;
+}
+
+.five-days-forecast {
+    background-color: #333;
+    border-radius: 10px;
+    padding: 20px;
+    flex: 1;
+}
+
+.forecast-days {
+    display: flex;
+    justify-content: space-around;
+    overflow-x: auto;
+    white-space: nowrap;
+}
+
+.day {
+    text-align: center;
+    width: 100px;
+}
+
+.day-date {
+    margin-bottom: 5px;
+}
+
+.day-date span {
+    display: block;
+}
+
+.day-icon img {
+    width: 50px;
+}
+
+.day-temp {
+    font-size: 1.2rem;
+    margin-top: 5px;
+}
+
+.hourly-forecast {
+    margin-top: 20px;
+}
+
+.hour-container {
+    display: flex;
+    justify-content: space-between;
+    overflow-x: auto;
+    white-space: nowrap;
+}
+
+.hour {
+    text-align: center;
+    width: 70px;
+    margin-bottom: 10px;
+}
+
+.hour-time {
+    margin-bottom: 5px;
+}
+
+.hour-icon img {
+    width: 30px;
+}
+
+.hour-temp {
+    font-size: 1rem;
+    margin-top: 5px;
+}
+
+.footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.control-panel {
+    display: flex;
+    align-items: center;
+}
+
+.control-panel button {
+    padding: 8px 12px;
+    border-radius: 5px;
+    border: none;
+    background-color: #333;
+    color: #fff;
+    cursor: pointer;
+    margin-right: 10px;
+}
+
+.control-panel button:focus {
+    outline: 2px solid #4CAF50;
+    outline-offset: 2px;
+}
+
+.time-range {
+    display: flex;
+    align-items: center;
+    margin-right: 10px;
+}
+
+.time-range span {
+    margin-right: 5px;
+}
+
+.demo-mode {
+    display: flex;
+    align-items: center;
+}
+
+.demo-mode span {
+    margin-right: 5px;
+}
+
+.demo-mode button {
+    padding: 8px 12px;
+    border-radius: 5px;
+    border: none;
+    background-color: #333;
+    color: #fff;
+    cursor: pointer;
+}
+
+.demo-mode button:focus {
+    outline: 2px solid #4CAF50;
+    outline-offset: 2px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .content {
+        flex-direction: column;
+    }
+    .now-weather {
+        margin-bottom: 20px;
+    }
+    .todays-highlights, .other-details {
+        margin-bottom: 20px;
+    }
+}
